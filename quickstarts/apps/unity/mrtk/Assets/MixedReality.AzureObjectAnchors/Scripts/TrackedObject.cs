@@ -71,6 +71,7 @@ namespace Microsoft.Azure.ObjectAnchors.Unity.Sample
             {
                 UpdatePlacement(pendingTrackedObjectData);
                 UpdateMeshes();
+                CustomerModelShowCaseController.Instance.ShowObject(SingleAnchorRenderer.transform.position, SingleAnchorPlacement.transform.rotation, TrackedObjectState);
                 UpdateDebugText();
             }
 

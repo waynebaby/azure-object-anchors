@@ -36,3 +36,25 @@ Learn how to use an Azure Object Anchors model in an app to detect physical obje
 * [HoloLens with DirectX](https://docs.microsoft.com/azure/object-anchors/quickstarts/get-started-hololens-directx)
 * [HoloLens with Unity](https://docs.microsoft.com/azure/object-anchors/quickstarts/get-started-unity-hololens)
 * [HoloLens with Unity and MRTK](https://docs.microsoft.com/azure/object-anchors/quickstarts/get-started-unity-hololens-mrtk)
+
+#HoloLens with Unity and MRTK enhancement includes parts below:
+
+- A unity editor script that adds a menu item `Assets/Create AssetBundles for Runtime Loading`, which can generate assets in project (`.fbx`, `.obj` files) into `Asset Bundles`. Those `Asset Bundles` file can be loaded from `3D Object` folder in runtime. 
+
+- A Prefeab/Controller suite allows user:
+     - Display the `.model` Asset Bundle file when the same named `.ou`  AOA model was detected.
+     - Use `Recalibration Panel` of the displayed model hologram to recalibrate potential position/rotation mislocating and save the relative offset-pose into a `.json` file with same name. The file will be automatically loaded next time. (The rotation was saved as Eular angle for manual editing friendly).
+     
+
+## How to create appbundles for .fbx files 
+- Import you own `.fbx` files into `Assets/Models` folder.
+-  Select each file you imported, perform following actions in `Inspector` <br/>![AssetBundle setting](https://docs.unity3d.com/530/Documentation/uploads/Main/AssetBundleInspectorNewBundle.png)
+   -   Create an new `AssetBundle` name same as your `.fbx` file name. (`cattoy` for `cattoy.fbx`) and assign it to this file.
+   -   Create an new extension name `model` in the dropbox on the right, and assign it to this file. 
+-  In Unity main menu, select `Assets` -> `Create AssetBundles for Runtime Loading`.
+-  In the popuped window, exam the text field `Target Directory` if it is your desired target, then click 'Okay'.
+-  You can see the new `.model` files for each `.fbx` （other files are not necessary）. 
+-  You can upload files to `3D Objects` folder in your HoloLens when you need. 
+
+
+

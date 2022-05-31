@@ -110,6 +110,7 @@ namespace Microsoft.Azure.ObjectAnchors.Unity.Sample
 
         private void StartSearch()
         {
+            CustomerModelShowCaseController.Instance.ResetDisplayModels();
             ObjectAnchorsService.GetService().Resume();
 
             StopSearchButton.gameObject.SetActive(true);
