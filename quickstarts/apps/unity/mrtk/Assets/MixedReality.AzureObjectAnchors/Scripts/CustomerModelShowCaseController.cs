@@ -56,7 +56,14 @@ public class CustomerModelShowCaseController : MonoBehaviour
         }
     }
 
-
+    public void RemoveDisplayModel(Guid instanceId)
+    {
+        if (loadedDisplayModelObjects.TryGetValue(instanceId ,out var outputItem))
+        {
+            loadedDisplayModelObjects.Remove(instanceId);
+            Destroy(outputItem.gameObject);
+        }
+    }
     public async void ShowObject(Vector3 position, Quaternion rotation, TrackedObjectData state)
     {
         var templateName = state.ModelFileName.ToLower();

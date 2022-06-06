@@ -21,7 +21,7 @@ public class CustomerModelShowCase : MonoBehaviour
 
         SetCheckboxes();
     }
-
+    public float positionSliderScale = 0.55f;
     private EulerPoseWithName currentBaseOffset = new EulerPoseWithName() { name = "default" };
     private EulerPoseWithName currentAdjustedOffset
     {
@@ -56,6 +56,15 @@ public class CustomerModelShowCase : MonoBehaviour
 
     public GameObject DisplayingModel { get; private set; }
 
+    public void ResetDisplayModels()
+    {
+        CustomerModelShowCaseController.Instance.ResetDisplayModels();
+    }
+    public void RemoveDisplayModel()
+    {
+        CustomerModelShowCaseController.Instance.RemoveDisplayModel(trackedObjectData?.InstanceId??Guid.Empty);
+
+    }
     private List<(MeshRenderer renderer, Material[] original, Material[] wiredNew)> MaterialBackups;
     // private Boolean IsShowingAsWireFrame = false;
     public void ApplyModelToStage(EulerPoseWithName additionalOffset, GameObject createdDisplayModel, TrackedObjectData state, string message = "")
@@ -160,15 +169,15 @@ additionalel:{JsonUtility.ToJson(currentAdjustedOffset.rotation.eulerAngles)}";
     public void ChangePositionX(float offset)
     {
 
-        ChangePosition(new Vector3(offset, 0, 0));
+        ChangePosition(new Vector3(offset * positionSliderScale, 0, 0));
     }
     public void ChangePositionY(float offset)
     {
-        ChangePosition(new Vector3(0, offset, 0));
+        ChangePosition(new Vector3(0, offset * positionSliderScale, 0));
     }
     public void ChangePositionZ(float offset)
     {
-        ChangePosition(new Vector3(0, 0, offset));
+        ChangePosition(new Vector3(0, 0, offset * positionSliderScale));
     }
     public void ChangeRotation(Vector3 offset)
     {
