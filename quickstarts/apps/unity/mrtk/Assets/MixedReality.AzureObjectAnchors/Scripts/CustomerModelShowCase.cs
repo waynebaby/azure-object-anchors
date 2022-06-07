@@ -102,10 +102,6 @@ public class CustomerModelShowCase : MonoBehaviour
             var positionCorrection = matrix.Value.MultiplyPoint(Vector3.zero);
             var correctionDirection = currentAdjustedOffset.correctionPositionDirection;
 
-            positionCorrection = new Vector3(correctionDirection.x * positionCorrection.x,
-                correctionDirection.y * positionCorrection.y,
-                correctionDirection.z * positionCorrection.z);
-
             var correctionPose = new Pose(positionCorrection, matrix.Value.rotation);
             Debug.Log("Successfully get transform from center");
             LogTextMesh.text = LogTextMesh.text + @$"
